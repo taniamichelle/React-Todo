@@ -4,7 +4,7 @@ import { isTemplateElement } from '@babel/types';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
-const tasks = [
+const todos = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
@@ -28,36 +28,36 @@ class App extends React.Component {
     };
   }
 
-  toggleTask = id => {
+  toggleTodo = id => {
     console.log('task example')
     this.setState({
-      tasks: this.state.tasks.map(task => {
-        if (task.id === id) {
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
           return {
-            ...task,
-            completed: !task.completed
+            ...todo,
+            completed: !todo.completed
           };
         } else {
-          return task;
+          return todo;
         }
       })
     });
   };
 
-  addTask = taskName => {
-    const newTask = {
-      name: taskName,
+  addTodo = todoName => {
+    const newTodo = {
+      name: todoName,
       id: Date.now(),
       completed: false
     };
     this.setState({
-      tasks: [...this.state.tasks, newTask]
+      todos: [...this.state.todos, newTodo]
     });
   };
 
   clearCompleted = () => {
     this.setState({
-      tasks: this.state.tasks.filter(task => !isTemplateElement.purchased)
+      todos: this.state.todos.filter(todo => !isTemplateElement.purchased)
     });
   };
 
@@ -66,11 +66,11 @@ class App extends React.Component {
       <div className='App'>
         <div className='header'>
           <h2>Welcome to your Todo App!</h2>
-          <TodoForm addTask={this.addTask} />
+          <TodoForm addTodo={this.addTodo} />
         </div>
         <TodoList
-          tasks={this.state.tasks}
-          toggleTask={this.toggleTask}
+          todos={this.state.todos}
+          toggleTodo={this.toggleTodo}
         />
       </div>
     );

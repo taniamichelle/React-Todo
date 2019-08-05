@@ -11,11 +11,11 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.submitTask} >
+            <form onSubmit={this.submitTodo} >
                 <input
                     type='text'
-                    value={this.state.task}
-                    name='task'
+                    value={this.state.todo}
+                    name='todo'
                     onChange={this.handleChanges}
                 />
                 <button>Add Todo</button>
