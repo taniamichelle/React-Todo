@@ -1,10 +1,9 @@
 import React from 'react';
-import { isTemplateElement } from '@babel/types';
-
+import './styles.scss';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
-const todos = [
+const todosData = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
@@ -23,13 +22,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: 'Vacuum',
-      tasks
+      task: 'Vacuum',
+      todos: todosData
     };
   }
 
   toggleTodo = id => {
-    console.log('task example')
+    console.log('id')
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
@@ -44,9 +43,9 @@ class App extends React.Component {
     });
   };
 
-  addTodo = todoName => {
+  addTodo = todoTask => {
     const newTodo = {
-      name: todoName,
+      task: todoTask,
       id: Date.now(),
       completed: false
     };
@@ -57,7 +56,7 @@ class App extends React.Component {
 
   clearCompleted = () => {
     this.setState({
-      todos: this.state.todos.filter(todo => !isTemplateElement.purchased)
+      todos: this.state.todos.filter(todo => !todo.completed)
     });
   };
 
